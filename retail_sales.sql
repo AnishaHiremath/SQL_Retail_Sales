@@ -1,4 +1,4 @@
-CREATE DATABASE spl_project_1
+CREATE DATABASE spl_project_1;
 
 CREATE TABLE retail_sales
 (
