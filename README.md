@@ -152,7 +152,8 @@ select case
 		else 'Evening shift'
 		end as shift, count(transactions_id) as No_of_orders from retail_sales
 group by 1;
-            OR
+
+--OR
 
 with hourly_shifts as
 (select *,
