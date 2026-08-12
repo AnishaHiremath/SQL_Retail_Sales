@@ -144,29 +144,6 @@ select category, count(distinct customer_id) as no_of_customers from retail_sale
 group by 1;
 ```
 
-10. **Write a SQL query to create each shift and number of orders (Example Morning <12, Afternoon Between 12 & 17, Evening >17)**:
-```sql
-select case
-		when extract(hour from sale_time) > 12 then 'Morning shift'
-		when extract(hour from sale_time) between 12 and 17 then 'Afternoon shift'
-		else 'Evening shift'
-		end as shift, count(transactions_id) as No_of_orders from retail_sales
-group by 1;
-
---OR
-
-with hourly_shifts as
-(select *,
-	case
-		when extract(hour from sale_time) > 12 then 'Morning shift'
-		when extract(hour from sale_time) between 12 and 17 then 'Afternoon shift'
-		else 'Evening shift'
-		end as shift
-		from retail_sales
-) select shift, count(transactions_id) as No_of_orders from hourly_shifts
-group by shift;
-```
-
 ## Findings
 
 - **Customer Demographics**: The dataset includes customers from various age groups, with sales distributed across different categories such as Clothing and Beauty.
@@ -184,12 +161,6 @@ group by shift;
 
 This project serves as a comprehensive introduction to SQL for data analysts, covering database setup, data cleaning, exploratory data analysis, and business-driven SQL queries. The findings from this project can help drive business decisions by understanding sales patterns, customer behavior, and product performance.
 
-## How to Use
-
-1. **Clone the Repository**: Clone this project repository from GitHub.
-2. **Set Up the Database**: Run the SQL scripts provided in the `database_setup.sql` file to create and populate the database.
-3. **Run the Queries**: Use the SQL queries provided in the `analysis_queries.sql` file to perform your analysis.
-4. **Explore and Modify**: Feel free to modify the queries to explore different aspects of the dataset or answer additional business questions.
 
 ## Author - Anisha Hiremath
 
